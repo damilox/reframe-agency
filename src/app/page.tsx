@@ -11,6 +11,7 @@ import Process from "@/components/Process"; // Integrated the new component
 import Work from "@/components/Work";
 import LeadForm from "@/components/LeadForm";
 import FooterCTA from "@/components/FooterCTA";
+import About from "@/components/About";
 
 export default function Home() {
   return (
@@ -63,7 +64,7 @@ export default function Home() {
       <div id="services">
         <BentoServices />
       </div>
-
+        <About/>
       {/* 4. THE METHODOLOGY (The Process Section) */}
       {/* We place this after services to explain HOW the services are delivered */}
       <div id="process">
