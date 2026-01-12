@@ -1,65 +1,118 @@
-import Image from "next/image";
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+
+// Component Imports
+import Navbar from "@/components/Navbar";
+import Marquee from "@/components/Marquee";
+import BentoServices from "@/components/BentoServices";
+import Process from "@/components/Process"; // Integrated the new component
+import Work from "@/components/Work";
+import LeadForm from "@/components/LeadForm";
+import FooterCTA from "@/components/FooterCTA";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="bg-black min-h-screen selection:bg-indigo-500/30">
+      <Navbar />
+
+      {/* 1. HERO SECTION */}
+      <section className="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+        {/* Background Ambient Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/10 blur-[140px] rounded-full -z-10" />
+        
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h1 className="text-7xl md:text-[12rem] font-bold text-white tracking-tighter leading-none mb-6">
+            REFRAME
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+        </motion.div>
+
+        <motion.p 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 1 }}
+          className="text-gray-400 text-lg md:text-xl max-w-xl leading-relaxed"
+        >
+          A high-performance digital engine for 
+          <span className="text-white font-medium"> branding</span>, 
+          <span className="text-white font-medium"> marketing</span>, and 
+          <span className="text-white font-medium"> creative growth</span>.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="mt-10"
+        >
+          <a href="#contact" className="bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-indigo-500 hover:text-white transition-all duration-300">
+            Start Your Transformation
+          </a>
+        </motion.div>
+      </section>
+
+      {/* 2. SOCIAL PROOF (Rage Media Style) */}
+      <Marquee />
+
+      {/* 3. CORE SERVICES (Bento Grid Layout) */}
+      <div id="services">
+        <BentoServices />
+      </div>
+
+      {/* 4. THE METHODOLOGY (The Process Section) */}
+      {/* We place this after services to explain HOW the services are delivered */}
+      <div id="process">
+        <Process />
+      </div>
+
+      {/* 5. CASE STUDIES (The Proof) */}
+      <div id="work">
+        <Work />
+      </div>
+
+      {/* 6. THE LEAD FUNNEL (Qualification Form) */}
+      <section id="contact" className="py-32 bg-[#050505] relative border-t border-white/5">
+        <div className="max-w-3xl mx-auto px-4 relative z-10 text-center">
+          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-6">
+            Ready to <span className="text-indigo-500 font-serif italic">Scale?</span>
+          </h2>
+          <p className="text-gray-500 mb-12 text-lg">
+            We only take on 2 new partners per month to ensure elite-level execution.
+          </p>
+          <LeadForm />
+        </div>
+
+        {/* Decorative Grid background for the form section */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+      </section>
+
+      {/* 7. FINAL CALL TO ACTION */}
+      <FooterCTA />
+
+      {/* 8. FOOTER */}
+      <footer className="py-12 border-t border-white/5 bg-black">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="text-white font-bold text-2xl tracking-tighter">
+            REFRAME<span className="text-indigo-500">.</span>
+          </div>
+          
+          <div className="flex gap-10 text-sm font-medium text-gray-500">
+            <a href="#services" className="hover:text-white transition-colors">Expertise</a>
+            <a href="#process" className="hover:text-white transition-colors">Method</a>
+            <a href="#work" className="hover:text-white transition-colors">Archives</a>
+            <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+          </div>
+
+          <p className="text-gray-600 text-xs font-mono">
+            © 2026 REFRAME DIGITAL. ALL RIGHTS RESERVED.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+      </footer>
+    </main>
   );
 }
