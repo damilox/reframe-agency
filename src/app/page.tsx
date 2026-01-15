@@ -12,6 +12,7 @@ import Work from "@/components/Work";
 import LeadForm from "@/components/LeadForm";
 import FooterCTA from "@/components/FooterCTA";
 import About from "@/components/About";
+import Reviews from "@/components/Reviews";
 
 export default function Home() {
   return (
@@ -19,43 +20,55 @@ export default function Home() {
       <Navbar />
 
       {/* 1. HERO SECTION */}
-      <section className="relative h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden">
-        {/* Background Ambient Glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/10 blur-[140px] rounded-full -z-10" />
-        
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <h1 className="text-7xl md:text-[12rem] font-bold text-white tracking-tighter leading-none mb-6">
-            REFRAME
-          </h1>
-        </motion.div>
+      <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-4 overflow-hidden pt-20">
+  {/* Background Ambient Glow */}
+  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-600/10 blur-[120px] rounded-full -z-10" />
+  
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+    className="flex flex-col mb-10 gap-1 md:gap-2"
+  >
+    <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter uppercase">
+      Building Trusted Brands<span className="text-indigo-500">.</span>
+    </h1>
+    <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter uppercase">
+      Mastering Markets
+    </h1>
+    <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter uppercase">
+      Scaling Sales
+    </h1>
+  </motion.div>
 
-        <motion.p 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 1 }}
-          className="text-gray-400 text-lg md:text-xl max-w-xl leading-relaxed"
-        >
-          A high-performance digital engine for 
-          <span className="text-white font-medium"> branding</span>, 
-          <span className="text-white font-medium"> marketing</span>, and 
-          <span className="text-white font-medium"> creative growth</span>.
-        </motion.p>
+  <motion.div 
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.4, duration: 1 }}
+    className="max-w-xl border-t border-white/10 pt-8"
+  >
+    <p className="text-white font-bold text-xs md:text-sm uppercase tracking-[0.3em] mb-4">
+      LET'S BE HONEST. Marketing can be <span className="text-indigo-500 italic">BRUTALLY HARD.</span>
+    </p>
+    <p className="text-gray-400 text-sm md:text-base leading-relaxed px-4 md:px-0">
+      But it doesn’t have to drain you. We simplify the noise, sharpen your message, and help your brand get seen, heard, and sell with confidence.
+    </p>
+  </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="mt-10"
-        >
-          <a href="#contact" className="bg-white text-black px-8 py-4 rounded-full font-bold hover:bg-indigo-500 hover:text-white transition-all duration-300">
-            Start Your Transformation
-          </a>
-        </motion.div>
-      </section>
+  <motion.div
+    initial={{ opacity: 0, y: 15 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.6 }}
+    className="mt-12 flex flex-row justify-center gap-3 md:gap-6"
+  >
+    <div className="flex items-center gap-2 text-indigo-400 font-bold text-xs md:text-sm tracking-widest border-b border-indigo-500/30 pb-1">
+      10X MORE REACH
+    </div>
+    <div className="flex items-center gap-2 text-indigo-400 font-bold text-xs md:text-sm tracking-widest border-b border-indigo-500/30 pb-1">
+      10X MORE SALES
+    </div>
+  </motion.div>
+</section>
 
       {/* 2. SOCIAL PROOF (Rage Media Style) */}
       <Marquee />
@@ -64,6 +77,7 @@ export default function Home() {
       <div id="services">
         <BentoServices />
       </div>
+      <Reviews/>
         <About/>
       {/* 4. THE METHODOLOGY (The Process Section) */}
       {/* We place this after services to explain HOW the services are delivered */}

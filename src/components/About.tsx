@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image"; // 1. Import the Image component
 
 export default function About() {
   return (
@@ -10,15 +11,23 @@ export default function About() {
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          className="relative aspect-square md:aspect-[4/5] rounded-[40px] overflow-hidden border border-white/10"
+          viewport={{ once: true }}
+          className="relative aspect-square md:aspect-[4/5] rounded-[40px] overflow-hidden border border-white/10 group"
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
-          {/* Replace with actual image: <Image src="/founder.jpg" fill className="object-cover" /> */}
-          <div className="w-full h-full bg-neutral-900 flex items-center justify-center text-gray-700">
-            [Founder Image]
-          </div>
+          {/* Overlay Gradient for Text Legibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10 opacity-80" />
+          
+          {/* 2. The Actual Image Implementation */}
+          <Image 
+            src="/images/reframe.jpg" // Change this to your actual filename (e.g., /ceo.png)
+            alt="Babalola Olaoluwa - Founder of Reframe Digital"
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-700"
+            priority // Helps with LCP performance
+          />
+
           <div className="absolute bottom-8 left-8 z-20">
-            <p className="text-white font-bold text-2xl tracking-tighter">Babalola Olaoluwa</p>
+            <p className="text-white font-bold text-2xl tracking-tighter">Babalola Olaoluwa David</p>
             <p className="text-indigo-500 font-medium uppercase text-xs tracking-widest">Founder & Lead Strategist</p>
           </div>
         </motion.div>
