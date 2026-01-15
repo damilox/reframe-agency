@@ -111,23 +111,39 @@ export default function Home() {
 
       {/* 8. FOOTER */}
       <footer className="py-12 border-t border-white/5 bg-black">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="text-white font-bold text-2xl tracking-tighter">
-            REFRAME<span className="text-indigo-500">.</span>
-          </div>
-          
-          <div className="flex gap-10 text-sm font-medium text-gray-500">
-            <a href="#services" className="hover:text-white transition-colors">Expertise</a>
-            <a href="#process" className="hover:text-white transition-colors">Method</a>
-            <a href="#work" className="hover:text-white transition-colors">Archives</a>
-            <a href="#contact" className="hover:text-white transition-colors">Contact</a>
-          </div>
+  <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+    {/* Logo */}
+    <div className="text-white font-bold text-2xl tracking-tighter">
+      REFRAME<span className="text-indigo-500">.</span>
+    </div>
+    
+    {/* Navigation */}
+    <div className="flex gap-10 text-sm font-medium text-gray-500">
+      <a href="#services" className="hover:text-white transition-colors">Expertise</a>
+      <a href="#process" className="hover:text-white transition-colors">Method</a>
+      <a href="#work" className="hover:text-white transition-colors">Archives</a>
+      <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+    </div>
 
-          <p className="text-gray-600 text-xs font-mono">
-            © 2026 REFRAME DIGITAL. ALL RIGHTS RESERVED.
-          </p>
-        </div>
-      </footer>
+    {/* Copyright & Credit */}
+    <div className="flex flex-col items-center md:items-end gap-2">
+      <p className="text-gray-600 text-[10px] font-mono tracking-widest uppercase">
+        © 2026 REFRAME DIGITAL.
+      </p>
+      <p className="text-gray-500 text-[10px] font-mono uppercase tracking-[0.2em]">
+        Built by {" "}
+        <a 
+          href="https://yourportfolio.com" // Replace with your actual portfolio link
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-white hover:text-indigo-500 underline underline-offset-4 decoration-indigo-500/30 transition-all"
+        >
+          Damilola
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
     </main>
   );
 }

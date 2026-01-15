@@ -19,7 +19,7 @@ export default function About() {
           
           {/* 2. The Actual Image Implementation */}
           <Image 
-            src="/images/reframe.jpg" // Change this to your actual filename (e.g., /ceo.png)
+            src="/images/david.jpg" // Change this to your actual filename (e.g., /ceo.png)
             alt="Babalola Olaoluwa - Founder of Reframe Digital"
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-700"

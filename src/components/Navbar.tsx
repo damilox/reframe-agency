@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react"; // Import from 'lucide-react'
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -26,7 +26,7 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className={cn(
-          "flex items-center justify-between px-6 py-3 rounded-full transition-all duration-300 w-full max-w-5xl",
+          "relative flex items-center justify-between px-6 py-3 rounded-full transition-all duration-300 w-full max-w-5xl",
           scrolled || isOpen
             ? "bg-black/80 backdrop-blur-xl border border-white/10 shadow-2xl"
             : "bg-transparent border border-transparent"
@@ -48,9 +48,13 @@ export default function Navbar() {
 
         {/* Mobile Toggle & CTA */}
         <div className="flex items-center gap-4">
-          <button className="hidden md:block bg-white text-black text-[10px] font-black tracking-widest px-5 py-2.5 rounded-full hover:bg-indigo-500 hover:text-white transition-all">
+          {/* DESKTOP CTA BUTTON LINKED TO CONTACT */}
+          <a 
+            href="#contact"
+            className="hidden md:block bg-white text-black text-[10px] font-black tracking-widest px-5 py-2.5 rounded-full hover:bg-indigo-500 hover:text-white transition-all shadow-lg hover:shadow-indigo-500/50"
+          >
             GET STARTED
-          </button>
+          </a>
           
           {/* Hamburger Icon */}
           <button 
@@ -65,10 +69,10 @@ export default function Navbar() {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              className="absolute top-full left-0 w-full bg-black/95 backdrop-blur-2xl mt-2 rounded-3xl overflow-hidden md:hidden border border-white/10"
+              initial={{ opacity: 0, height: 0, y: -20 }}
+              animate={{ opacity: 1, height: "auto", y: 0 }}
+              exit={{ opacity: 0, height: 0, y: -20 }}
+              className="absolute top-full left-0 w-full bg-[#0A0A0A] border border-white/10 mt-2 rounded-[2rem] overflow-hidden md:hidden shadow-2xl"
             >
               <div className="flex flex-col p-8 gap-6 text-center">
                 {navLinks.map((link) => (
@@ -81,9 +85,15 @@ export default function Navbar() {
                     {link.name}
                   </a>
                 ))}
-                <button className="bg-indigo-600 text-white py-4 rounded-2xl font-bold mt-4">
+                
+                {/* MOBILE CTA BUTTON LINKED TO CONTACT */}
+                <a 
+                  href="#contact"
+                  onClick={() => setIsOpen(false)}
+                  className="bg-indigo-600 text-white py-4 rounded-2xl font-bold mt-4 uppercase tracking-widest text-sm hover:bg-indigo-700 transition-all"
+                >
                   START A PROJECT
-                </button>
+                </a>
               </div>
             </motion.div>
           )}

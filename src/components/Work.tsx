@@ -1,83 +1,104 @@
 "use client";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const projects = [
   {
-    title: "Project Zenith",
-    tags: ["Branding", "Web Design"],
-    result: "120% Sales Lift",
-    color: "bg-blue-600",
+    title: "Peculiar Grace F&B",
+    category: "360° Brand Transformation",
+    metrics: "+45% Dine-in Revenue",
+    // Stable high-quality restaurant food shot
+    image: "https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", 
+    description: "A complete visual overhaul for a premier supermarket's food division—integrating social media strategy with physical environmental branding."
   },
   {
-    title: "Nova Marketing",
-    tags: ["Ads", "Copywriting"],
-    result: "5.4x ROAS",
-    color: "bg-indigo-600",
-  },
-  {
-    title: "The Reframe Lab",
-    tags: ["Strategy", "Graphics"],
-    result: "Market Leader",
-    color: "bg-purple-600",
-  },
-  {
-    title: "Elite Estates",
-    tags: ["Lead Gen", "Ads"],
-    result: "500+ Qualified Leads",
-    color: "bg-zinc-800",
-  },
+    title: "Zenith Rebrand",
+    category: "Fintech Design",
+    metrics: "$2M Seed Round Raised",
+    // Stable sleek dark tech UI shot
+    image: "https://images.pexels.com/photos/2582937/pexels-photo-2582937.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    description: "Architecting a trust-based visual system for a disruptive fintech player in the digital banking space."
+  }
 ];
 
 export default function Work() {
   return (
-    <section className="py-24 px-4 bg-black">
+    <section id="work" className="py-24 px-4 bg-black">
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-end mb-16">
-          <div>
-            <h2 className="text-4xl font-bold text-white mb-4">Selected Work</h2>
-            <p className="text-gray-400">Where strategy meets execution.</p>
-          </div>
-          <button className="hidden md:block text-white border-b border-indigo-500 pb-1 hover:text-indigo-400 transition-colors">
-            View All Case Studies
-          </button>
+        {/* Header Section */}
+        <div className="mb-16 flex flex-col md:flex-row justify-between items-end gap-6">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-7xl font-bold text-white tracking-tighter"
+          >
+            Selected <br /> <span className="text-indigo-500 font-serif italic">Archives</span>
+          </motion.h2>
+          <p className="text-gray-500 max-w-xs text-sm leading-relaxed">
+            Proof of our ability to reframe perception and scale sales across physical and digital touchpoints.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
+        {/* Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {projects.map((p, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              whileHover={{ y: -10 }}
               className="group cursor-pointer"
             >
-              {/* Image Container */}
-              <div className="relative h-[450px] w-full overflow-hidden rounded-3xl bg-neutral-900 border border-white/5">
-                {/* Background color placeholder - you will replace with <Image /> later */}
-                <div className={cn("absolute inset-0 opacity-40 group-hover:scale-110 transition-transform duration-700", project.color)} />
+              <div className="relative aspect-[16/10] rounded-[40px] overflow-hidden border border-white/10 bg-neutral-900">
+                {/* Fixed Image Tag for stability */}
+                <img 
+                  src={p.image} 
+                  alt={p.title} 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70 group-hover:opacity-100" 
+                />
                 
-                {/* Result Badge */}
-                <div className="absolute top-6 left-6 bg-white text-black px-4 py-1 rounded-full text-xs font-bold">
-                  {project.result}
+                <div className="absolute top-6 right-6 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold px-4 py-2 rounded-full z-20">
+                   {p.metrics}
                 </div>
-
-                {/* Bottom Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
-                
-                <div className="absolute bottom-8 left-8">
-                  <div className="flex gap-2 mb-3">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="text-[10px] uppercase tracking-widest text-white/60 border border-white/20 px-2 py-1 rounded">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <h3 className="text-3xl font-bold text-white">{project.title}</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+              </div>
+              
+              <div className="mt-8 flex justify-between items-start px-2">
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-1 uppercase tracking-tight">{p.title}</h3>
+                  <p className="text-indigo-500 text-xs font-bold uppercase tracking-widest mb-4">{p.category}</p>
+                  <p className="text-gray-400 text-sm max-w-sm leading-relaxed">{p.description}</p>
+                </div>
+                <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white group-hover:bg-indigo-500 group-hover:border-indigo-500 transition-all">
+                  ↗
                 </div>
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* 360° Brand Rollout Grid */}
+        <div className="mt-32 pt-24 border-t border-white/5">
+          <div className="mb-12">
+            <h3 className="text-white font-bold text-xl uppercase tracking-[0.3em] mb-4">The Multi-Channel Ecosystem</h3>
+            <p className="text-gray-500 max-w-xl">Demonstrating visual consistency across Digital Content, Retail Signage, and POS Marketing.</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="relative aspect-square rounded-3xl overflow-hidden border border-white/10">
+               <Image src="/images/image-1.jpeg" alt="IG Assets" fill className="object-cover" />
+            </div>
+            <div className="relative aspect-square rounded-3xl overflow-hidden border border-white/10">
+               <Image src="/images/image-2.jpeg" alt="POS Assets" fill className="object-cover" />
+            </div>
+            <div className="relative aspect-square rounded-3xl overflow-hidden border border-white/10">
+               <Image src="/images/image-3.jpeg" alt="Event Assets" fill className="object-cover" />
+            </div>
+            <div className="relative aspect-square rounded-3xl overflow-hidden border border-white/10">
+               <Image src="/images/image-4.jpeg" alt="Promo Strategy" fill className="object-cover" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
