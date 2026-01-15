@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image"; // 1. Import the Image component
+import Image from "next/image"; 
 
 export default function About() {
   return (
@@ -19,11 +19,12 @@ export default function About() {
           
           {/* 2. The Actual Image Implementation */}
           <Image 
-            src="/images/david.jpg" // Change this to your actual filename (e.g., /ceo.png)
+            src="/images/david.jpg"
             alt="Babalola Olaoluwa - Founder of Reframe Digital"
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-700"
-            priority // Helps with LCP performance
+            // FIX APPLIED HERE: 'object-top' ensures the head is never cut off
+            className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+            priority 
           />
 
           <div className="absolute bottom-8 left-8 z-20">
@@ -53,7 +54,7 @@ export default function About() {
             </div>
             <div className="w-[1px] h-full bg-white/10" />
             <div>
-              <p className="text-white font-bold text-3xl">$10M+</p>
+              <p className="text-white font-bold text-3xl">10M+</p>
               <p className="text-gray-500 text-xs uppercase font-bold tracking-widest">Revenue Generated</p>
             </div>
           </div>
